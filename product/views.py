@@ -10,7 +10,8 @@ products=[
 ]
 
 def hello(request):
-    return  HttpResponse('<h1>Hello Omara</h1>')
+    return  render(request,'index.html')
+    # return  HttpResponse('<h1>Hello Omara</h1>')
 
 def productList(request):
     context={}

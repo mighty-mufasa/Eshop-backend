@@ -46,22 +46,21 @@
           <td>image</td>
           <td>Actions</td>
         </tr>
-        {%for product in products%}
+        {%for category in categories%}
         <tr>
-          <td>{{product.id}}</td>
-          <td>{{product.Name}}</td>
+          <td>{{category.id}}</td>
+          <td>{{category.Name}}</td>
           <td>
-            <!-- {{product.path}} -->
             <div style="width: 150px">
               <img
                 style="width: 100%"
-                src="{%static 'images/'|add:product.path %}"
+                src="{%static 'images/'|add:category.path %}"
               />
             </div>
           </td>
           <td>
-            <!-- <a href="/Product/{{product.id}}">show details</a> -->
-            <a href="{% url 'productDetails' product.id%}">show details</a>
+            <a href="/Category/{{category.id}}">show details</a>
+            <!-- <a href="{% url 'categoryDetails' category.id%}">show details</a> -->
           </td>
         </tr>
 

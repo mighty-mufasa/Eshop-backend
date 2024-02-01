@@ -39,34 +39,26 @@
     </nav>
 
     <div class="container">
-      <table class="table table-striped">
-        <tr>
-          <td>id</td>
-          <td>name</td>
-          <td>image</td>
-          <td>Actions</td>
-        </tr>
-        {%for product in products%}
-        <tr>
-          <td>{{product.id}}</td>
-          <td>{{product.Name}}</td>
-          <td>
-            <!-- {{product.path}} -->
-            <div style="width: 150px">
-              <img
-                style="width: 100%"
-                src="{%static 'images/'|add:product.path %}"
-              />
-            </div>
-          </td>
-          <td>
-            <!-- <a href="/Product/{{product.id}}">show details</a> -->
-            <a href="{% url 'productDetails' product.id%}">show details</a>
-          </td>
-        </tr>
-
-        {%endfor%}
-      </table>
+      <h2>Category Data</h2>
+      {%for category in category%}
+      <h3>
+        Id:
+        <span>{{category.id}}</span>
+      </h3>
+      <h3>
+        Name:
+        <span>{{category.Name}}</span>
+      </h3>
+      <h3>
+        Img
+        <div style="width: 250px">
+          <img
+            style="width: 100%"
+            src="{%static 'images/'|add:category.path %}"
+          />
+        </div>
+      </h3>
+      {%endfor%}
     </div>
     <script src="{%static 'bootstrap/js/bootstrap.min.js'%}" />
   </body>
