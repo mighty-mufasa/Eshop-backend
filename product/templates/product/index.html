@@ -27,11 +27,15 @@
       <td>{{product.updatedat}}</td>
       <td>
         <!-- <a href="/Product/{{product.id}}">show details</a> -->
-        <a href="{% url 'productDetails' product.id%}">Details</a>
-        <br />
-        <a href="">Update</a>
-        <br />
-        <a href="">Delete</a>
+        <a href="{% url 'productDetails' product.id%}">
+          <button type="button" class="btn btn-info my-3">Details</button>
+        </a>
+        <a href="">
+          <button type="button" class="btn btn-secondary my-3">Update</button>
+        </a>
+        <a href="">
+          <button type="button" class="btn btn-danger my-3">Delete</button>
+        </a>
       </td>
       {%endfor%}
     </tr>
