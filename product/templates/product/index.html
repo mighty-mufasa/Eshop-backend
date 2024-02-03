@@ -3,6 +3,7 @@
   <a href="{%url 'productAdd'%}">
     <button type="button" class="btn btn-primary my-3">Add Product</button>
   </a>
+  {%if products%}
   <table class="table table-striped">
     <tr>
       <td>ID</td>
@@ -33,12 +34,15 @@
         <a href="">
           <button type="button" class="btn btn-secondary my-3">Update</button>
         </a>
-        <a href="">
+        <a href="{% url 'product.delete' product.id%}">
           <button type="button" class="btn btn-danger my-3">Delete</button>
         </a>
       </td>
       {%endfor%}
     </tr>
   </table>
+  {%else%}
+  <h2>U have 0 Products</h2>
+  {%endif%}
 </div>
 {%endblock%}

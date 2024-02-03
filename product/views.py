@@ -5,6 +5,10 @@ from .models import *
 def hello(request):
     return  render(request,'index.html')
 
+def productDelete(request,id):
+    Product.objects.filter(id=id).delete()
+    return HttpResponseRedirect(reverse('product.all'))
+
 def addProduct(request):
     if request.method == 'POST':
         Product.objects.create(name=request.POST['pName'],
@@ -16,7 +20,7 @@ def addProduct(request):
     return render(request,'product/add.html')
 
 def productList(request):
-    context={'products':Product.objects.all}
+    context={'products':Product.objects.all()}
     return  render(request,'product/index.html',context)
 
 def productdetails(request,productid):
