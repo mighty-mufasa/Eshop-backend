@@ -1,23 +1,25 @@
-{%extends 'product/index.html'%}
-{%load static %}
-{%block content%}
+{%extends 'product/index.html'%} {%load static %} {%block content%}
 <div class="container">
-  <h2>Category Data</h2>
-  {%for category in category%}
-  <h3>
-    Id:
-    <span>{{category.id}}</span>
-  </h3>
-  <h3>
-    Name:
-    <span>{{category.Name}}</span>
-  </h3>
-  <h3>
-    Img
-    <div style="width: 250px">
-      <img style="width: 100%" src="{%static 'images/'|add:category.path %}" />
-    </div>
-  </h3>
-  {%endfor%}
+  <table class="table table-striped">
+    <tr>
+      <td>ID</td>
+      <td>Name</td>
+      <td>Email</td>
+      <td>Image</td>
+      <td>Age</td>
+      <td>CreatedAt</td>
+      <td>UpdatedAt</td>
+    </tr>
+
+    <tr>
+      <td>{{category.id}}</td>
+      <td>{{category.name}}</td>
+      <td>{{category.email}}</td>
+      <td>{{category.image}}</td>
+      <td>{{category.age}}</td>
+      <td>{{category.createdat}}</td>
+      <td>{{category.updatedat}}</td>
+    </tr>
+  </table>
 </div>
 {%endblock%}

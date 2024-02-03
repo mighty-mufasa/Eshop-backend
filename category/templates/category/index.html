@@ -1,33 +1,42 @@
-{%extends 'index.html'%}
-{%load static %}
-{%block content%}
+{%extends 'index.html'%} {%load static %} {%block content%}
 <div class="container">
+  {%if categories%}
   <table class="table table-striped">
     <tr>
-      <td>id</td>
-      <td>name</td>
-      <td>image</td>
+      <td>ID</td>
+      <td>Name</td>
+      <td>Email</td>
+      <td>Image</td>
+      <td>Age</td>
+      <td>CreatedAt</td>
+      <td>UpdatedAt</td>
       <td>Actions</td>
     </tr>
     {%for category in categories%}
     <tr>
       <td>{{category.id}}</td>
-      <td>{{category.Name}}</td>
+      <td>{{category.name}}</td>
+      <td>{{category.email}}</td>
+      <td>{{category.image}}</td>
+      <td>{{category.age}}</td>
+      <td>{{category.createdat}}</td>
+      <td>{{category.updatedat}}</td>
       <td>
-        <div style="width: 150px">
-          <img
-            style="width: 100%"
-            src="{%static 'images/'|add:category.path %}"
-          />
-        </div>
+        <a href="{% url 'category.details' category.id%}">
+          <button type="button" class="btn btn-info my-3">Details</button>
+        </a>
+        <a href="">
+          <button type="button" class="btn btn-secondary my-3">Update</button>
+        </a>
+        <a href="">
+          <button type="button" class="btn btn-danger my-3">Delete</button>
+        </a>
       </td>
-      <td>
-        <a href="/Category/{{category.id}}">show details</a>
-        <!-- <a href="{% url 'categoryDetails' category.id%}">show details</a> -->
-      </td>
+      {%endfor%}
     </tr>
-
-    {%endfor%}
   </table>
+  {%else%}
+  <h2>U have 0 Category</h2>
+  {%endif%}
 </div>
 {%endblock%}
