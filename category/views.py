@@ -4,6 +4,10 @@ from .models import *
 
 # Create your views here.
 
+def categoryDelete(request,id):
+    Category.objects.filter(id=id).delete()
+    return HttpResponseRedirect(reverse('category.all'))
+
 def addCategory(request):
     if request.method == 'POST':
         Category.objects.create(name=request.POST['cName'],
