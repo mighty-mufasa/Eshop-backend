@@ -4,6 +4,22 @@ from .models import *
 
 # Create your views here.
 
+def categoryOldData(request,id):
+    obj=Category.objects.get(id=id)
+    context={'obj':obj}
+    return render(request,'category/update.html',context)
+
+def categoryUpdate(request,id):
+    if request.method == 'POST':
+        obj=Category.objects.get(id=id)
+        obj.name=request.POST['cName']
+        obj.email=request.POST['cEmail']
+        obj.image=request.POST['cImage']
+        obj.age=request.POST['cAge']
+        obj.save()
+
+        return HttpResponseRedirect(reverse('category.all'))
+    
 def categoryDelete(request,id):
     Category.objects.filter(id=id).delete()
     return HttpResponseRedirect(reverse('category.all'))

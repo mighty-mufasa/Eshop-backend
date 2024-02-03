@@ -1,0 +1,50 @@
+{%extends 'index.html'%} {%load static %} {%block content%}
+<div class="container">
+  <h2>Update Category</h2>
+  <form action="{% url 'category.update' obj.id%}" method="post">
+    {%csrf_token%}
+    <div class="mb-3">
+      <label for="Name" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="Name"
+        name="cName"
+        value="{{obj.name}}"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="Email" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="Email"
+        name="cEmail"
+        value="{{obj.email}}"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="Image" class="form-label">Image</label>
+      <input
+        type="text"
+        class="form-control"
+        id="Image"
+        name="cImage"
+        value="{{obj.image}}"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="Age" class="form-label">Age</label>
+      <input
+        type="number"
+        class="form-control"
+        id="Age"
+        name="cAge"
+        value="{{obj.age}}"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+{%endblock%}
