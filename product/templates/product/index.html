@@ -1,34 +1,37 @@
-{%extends 'index.html'%}
-{%load static %}
-{%block content%}
+{%extends 'index.html'%} {%load static %} {%block content%}
 <div class="container">
   <table class="table table-striped">
     <tr>
-      <td>id</td>
-      <td>name</td>
-      <td>image</td>
+      <td>ID</td>
+      <td>Name</td>
+      <td>Price</td>
+      <td>Description</td>
+      <td>Image</td>
+      <td>Count</td>
+      <td>CreatedAt</td>
+      <td>UpdatedAt</td>
       <td>Actions</td>
     </tr>
     {%for product in products%}
     <tr>
       <td>{{product.id}}</td>
-      <td>{{product.Name}}</td>
-      <td>
-        <!-- {{product.path}} -->
-        <div style="width: 150px">
-          <img
-            style="width: 100%"
-            src="{%static 'images/'|add:product.path %}"
-          />
-        </div>
-      </td>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.description}}</td>
+      <td>{{product.image}}</td>
+      <td>{{product.count}}</td>
+      <td>{{product.createdat}}</td>
+      <td>{{product.updatedat}}</td>
       <td>
         <!-- <a href="/Product/{{product.id}}">show details</a> -->
-        <a href="{% url 'productDetails' product.id%}">show details</a>
+        <a href="{% url 'productDetails' product.id%}">Details</a>
+        <br />
+        <a href="">Update</a>
+        <br />
+        <a href="">Delete</a>
       </td>
+      {%endfor%}
     </tr>
-
-    {%endfor%}
   </table>
 </div>
 {%endblock%}
