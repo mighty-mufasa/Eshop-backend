@@ -1,9 +1,25 @@
 from django.shortcuts import render,reverse
-from django.http import  HttpResponseRedirect
+from django.http import  HttpResponseRedirect, HttpResponse
 from .models import *
 
 def hello(request):
     return  render(request,'index.html')
+
+def productOldData(request,id):
+    obj=Product.objects.get(id=id)
+    context={'obj':obj}
+    return render(request,'product/update.html',context)
+
+def productUpdate(request,id):
+    if request.method == 'POST':
+        obj=Product.objects.get(id=id)
+        obj.name=request.POST['pName']
+        obj.price=request.POST['pPrice']
+        obj.description=request.POST['pDescription']
+        obj.count=request.POST['pCount']
+        obj.save()
+
+        return HttpResponseRedirect(reverse('product.all'))
 
 def productDelete(request,id):
     Product.objects.filter(id=id).delete()
