@@ -1,5 +1,8 @@
 {%extends 'index.html'%} {%load static %} {%block content%}
 <div class="container">
+  <a href="{%url 'productAdd'%}">
+    <button type="button" class="btn btn-primary my-3">Add Product</button>
+  </a>
   <table class="table table-striped">
     <tr>
       <td>ID</td>

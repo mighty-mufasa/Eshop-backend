@@ -1,10 +1,19 @@
-from django.shortcuts import render
-from django.http import  HttpResponse
+from django.shortcuts import render,reverse
+from django.http import  HttpResponseRedirect
 from .models import *
 
 def hello(request):
     return  render(request,'index.html')
-    # return  HttpResponse('<h1>Hello Omara</h1>')
+
+def addProduct(request):
+    if request.method == 'POST':
+        Product.objects.create(name=request.POST['pName'],
+                               price=request.POST['pPrice'],
+                               description=request.POST['pDescription'],
+                               count=request.POST['pCount']
+                               )
+        return HttpResponseRedirect(reverse('product.all'))
+    return render(request,'product/add.html')
 
 def productList(request):
     context={'products':Product.objects.all}
