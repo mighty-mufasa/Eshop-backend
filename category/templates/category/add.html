@@ -1,0 +1,26 @@
+{%extends 'index.html'%} {%load static %} {%block content%}
+<div class="container">
+  <h2>Add New Category</h2>
+  <form method="post">
+    {%csrf_token%}
+    <div class="mb-3">
+      <label for="Name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="Name" name="cName" />
+    </div>
+    <div class="mb-3">
+      <label for="Email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="Email" name="cEmail" />
+    </div>
+    <div class="mb-3">
+      <label for="Image" class="form-label">Image</label>
+      <input type="text" class="form-control" id="Image" name="cImage" />
+    </div>
+    <div class="mb-3">
+      <label for="Age" class="form-label">Age</label>
+      <input type="number" class="form-control" id="Age" name="cAge" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+{%endblock%}

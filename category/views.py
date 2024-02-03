@@ -1,8 +1,18 @@
-from django.shortcuts import render
-from django.http import  HttpResponse
+from django.shortcuts import render,reverse
+from django.http import  HttpResponseRedirect
 from .models import *
 
 # Create your views here.
+
+def addCategory(request):
+    if request.method == 'POST':
+        Category.objects.create(name=request.POST['cName'],
+                                email=request.POST['cEmail'],
+                                image=request.POST['cImage'],
+                                age=request.POST['cAge']
+                               )
+        return HttpResponseRedirect(reverse('category.all'))
+    return render(request,'category/add.html')
 
 def categoryList(request):
     context={'categories':Category.objects.all()}

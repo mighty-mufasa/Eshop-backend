@@ -1,5 +1,8 @@
 {%extends 'index.html'%} {%load static %} {%block content%}
 <div class="container">
+  <a href="{%url 'category.add'%}">
+    <button type="button" class="btn btn-primary my-3">Add Category</button>
+  </a>
   {%if categories%}
   <table class="table table-striped">
     <tr>
