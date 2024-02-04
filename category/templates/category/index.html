@@ -25,7 +25,15 @@
       <td>{{category.id}}</td>
       <td>{{category.name}}</td>
       <td>{{category.email}}</td>
-      <td>{{category.image}}</td>
+      <td>
+        <div style="width: 150px; height: 150px">
+          <img
+            src="/media/{{category.image}}"
+            alt="category"
+            style="width: 100%"
+          />
+        </div>
+      </td>
       <td>{{category.age}}</td>
       <td>{{category.createdat}}</td>
       <td>{{category.updatedat}}</td>
