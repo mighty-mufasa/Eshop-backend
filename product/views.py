@@ -35,13 +35,13 @@ def productAddForm(request):
     if request.method == 'POST':
         form = ProductForm(request.POST,request.FILES)
         if (form.is_valid()):
-            Product.productAdd(request)
-            # Product.objects.create(name=request.POST['name'],
-            #                     price=request.POST['price'],
-            #                     description=request.POST['description'],
-            #                     image=request.FILES['image'],
-            #                     count=request.POST['count']
-            #                     )
+            # Product.productAdd(request) ==>Must be handled first to be dynamic for gui and forms
+            Product.objects.create(name=request.POST['name'],
+                                price=request.POST['price'],
+                                description=request.POST['description'],
+                                image=request.FILES['image'],
+                                count=request.POST['count']
+                                )
             return HttpResponseRedirect(reverse('product.all'))
         else:
             context['msg'] = 'Data not completed'

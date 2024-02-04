@@ -6,23 +6,26 @@ from .forms import *
 # Create your views here.
 
 def categoryUpdate(request,id):
-    category=Category.objects.get(id=id)
+    # category=Category.objects.get(id=id)
+    category=Category.categoryDetails(id)
     context={'category':category}
     if request.method == 'POST':
             if (request.POST['cName'] != ''):
-                Category.objects.filter(id=id).update(
-                                name=request.POST['cName'],
-                                email=request.POST['cEmail'],
-                                image=request.POST['cImage'],
-                                age=request.POST['cAge'],
-                                )
+                Category.categoryUpdate(request,id)
+                # Category.objects.filter(id=id).update(
+                #                 name=request.POST['cName'],
+                #                 email=request.POST['cEmail'],
+                #                 image=request.POST['cImage'],
+                #                 age=request.POST['cAge'],
+                #                 )
                 return HttpResponseRedirect(reverse('category.all'))
             else:
                 context['msg']='Kindly fill all fields'
     return render(request,'category/update.html',context)
     
 def categoryDelete(request,id):
-    Category.objects.filter(id=id).delete()
+    # Category.objects.filter(id=id).delete()
+    Category.categoryDelete(id)
     return HttpResponseRedirect(reverse('category.all'))
 
 def categoryAddForm(request):
@@ -43,20 +46,23 @@ def categoryAddForm(request):
 
 def addCategory(request):
     if request.method == 'POST':
-        Category.objects.create(name=request.POST['cName'],
-                                email=request.POST['cEmail'],
-                                image=request.FILES['cImage'],
-                                age=request.POST['cAge']
-                               )
+        Category.categoryAdd(request)
+        # Category.objects.create(name=request.POST['cName'],
+        #                         email=request.POST['cEmail'],
+        #                         image=request.FILES['cImage'],
+        #                         age=request.POST['cAge']
+        #                        )
         return HttpResponseRedirect(reverse('category.all'))
     return render(request,'category/add.html')
 
 def categoryList(request):
-    context={'categories':Category.objects.all()}
+    # context={'categories':Category.objects.all()}
+    context={'categories':Category.categoryList()}
     return render(request,'category/index.html',context)
 
 def categorydetails(request,id):
-    obj=Category.objects.get(id=id)
+    # obj=Category.objects.get(id=id)
+    obj=Category.categoryDetails(id)
     context={'category':obj}
     # context={'category':Category.objects.get(id=id)}
     return  render(request,'category/details.html',context)

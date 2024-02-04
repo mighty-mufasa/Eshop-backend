@@ -12,3 +12,36 @@ class Category(models.Model):
 
     def __str__(self):
         return f"{self.name},{self.email},{self.image},{self.age},{self.createdat},{self.updatedat}"
+    
+    @classmethod
+    def categoryAdd(self,request):
+        print("request========================>",request.POST)
+        return self.objects.create(name=request.POST['cName'],
+                                   email=request.POST['cEmail'],
+                                   image=request.POST['cImage'],
+                                   age=request.POST['cAge'],
+                                   )
+    @classmethod
+    def categoryUpdate(self,request,id):
+        return self.objects.filter(id=id).update(
+                                name=request.POST['cName'],
+                                email=request.POST['cEmail'],
+                                image=request.POST['cImage'],
+                                age=request.POST['cAge'],
+                                )
+
+    @classmethod
+    def categoryList(self):
+        return self.objects.all()
+
+    @classmethod
+    def categoryDetails(cls,id):
+        return cls.objects.get(id=id)
+
+    @classmethod
+    def categoryDelete(self,id):
+        return self.objects.filter(id=id).delete()
+
+    # Instance methods
+    def getImgURL(self): 
+        return f"/media/{self.image}"
