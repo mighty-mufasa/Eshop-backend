@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path,include
 from product import  views as Pviews
 from category import views as Cviews
+from .settings import *
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +27,4 @@ urlpatterns = [
     path('Product/',include('product.urls')),
     path('Category/',include('category.urls')),
     path('AboutUs/',Pviews.aboutUs),
-]
+]+static(MEDIA_URL, document_root=MEDIA_ROOT)

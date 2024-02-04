@@ -27,7 +27,15 @@
       <td>{{product.name}}</td>
       <td>{{product.price}}</td>
       <td>{{product.description}}</td>
-      <td>{{product.image}}</td>
+      <td>
+        <div style="width: 150px; height: 150px">
+          <img
+            src="/media/{{product.image}}"
+            alt="product"
+            style="width: 100%"
+          />
+        </div>
+      </td>
       <td>{{product.count}}</td>
       <td>{{product.createdat}}</td>
       <td>{{product.updatedat}}</td>
