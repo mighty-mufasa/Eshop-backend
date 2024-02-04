@@ -46,6 +46,12 @@ def categoryAddForm(request):
 
 def addCategory(request):
     if request.method == 'POST':
+        obj = Category.objects.filter(name=request.POST['cName']).exists()
+        obj2 = Category.objects.filter(email=request.POST['cEmail']).exists()
+        if obj or obj2:
+            context = {'msg': 'Be sure name and email is unique'}
+            return render(request,'category/add.html',context)
+               
         Category.categoryAdd(request)
         # Category.objects.create(name=request.POST['cName'],
         #                         email=request.POST['cEmail'],
