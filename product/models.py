@@ -1,4 +1,5 @@
 from django.db import models
+from category.models import *
 
 # Create your models here.
 class Product(models.Model):
@@ -9,6 +10,8 @@ class Product(models.Model):
     count = models.IntegerField(default=5)
     createdat = models.DateTimeField(auto_now_add=True)
     updatedat = models.DateTimeField(auto_now=True)
+    # object of Category model
+    category = models.ForeignKey(Category,null=True,blank=True,on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.name},{self.price},{self.description},{self.image},{self.count},{self.createdat},{self.updatedat}"
@@ -19,7 +22,8 @@ class Product(models.Model):
                                    price=request.POST['pPrice'],
                                    description=request.POST['pDescription'],
                                    image=request.FILES['pImage'],
-                                   count=request.POST['pCount']
+                                   count=request.POST['pCount'],
+                                   category=Category.objects.get(id=request.POST['(Category)'])
                                    )
     @classmethod
     def productUpdate(self,request,id):

@@ -1,6 +1,7 @@
 from django import forms
 from .models import Product
 from django.core.exceptions import ValidationError
+from category.models import *
 
 class ProductForm(forms.Form):
     name = forms.CharField(min_length=3, required=True)
@@ -8,6 +9,8 @@ class ProductForm(forms.Form):
     description = forms.CharField(max_length=250)
     image = forms.ImageField()
     count = forms.IntegerField(required=True)
+    # generate select html and fill options
+    category = forms.ChoiceField(choices=Category.getCategories())
 
     # add constraint for name (unique)
     def clean_name(self):

@@ -40,7 +40,9 @@ def productAddForm(request):
                                 price=request.POST['price'],
                                 description=request.POST['description'],
                                 image=request.FILES['image'],
-                                count=request.POST['count']
+                                count=request.POST['count'],
+                                category=Category.objects.get(id=request.POST['category'])
+                                
                                 )
             return HttpResponseRedirect(reverse('product.all'))
         else:

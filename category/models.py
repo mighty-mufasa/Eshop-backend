@@ -14,6 +14,10 @@ class Category(models.Model):
         return f"{self.name},{self.email},{self.image},{self.age},{self.createdat},{self.updatedat}"
     
     @classmethod
+    def getCategories(self):
+        return [(t.id,t.name) for t in self.objects.all()]
+
+    @classmethod
     def categoryAdd(self,request):
         print("request========================>",request.POST)
         return self.objects.create(name=request.POST['cName'],
