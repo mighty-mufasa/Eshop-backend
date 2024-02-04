@@ -1,6 +1,7 @@
 from django.shortcuts import render,reverse
 from django.http import  HttpResponseRedirect, HttpResponse
 from .models import *
+from .forms import *
 
 def hello(request):
     return  render(request,'index.html')
@@ -24,6 +25,23 @@ def productUpdate(request,id):
 def productDelete(request,id):
     Product.objects.filter(id=id).delete()
     return HttpResponseRedirect(reverse('product.all'))
+
+def productAddForm(request):
+    form = ProductForm()
+    context = {'form': form}
+    if request.method == 'POST':
+        form = ProductForm(request.POST,request.FILES)
+        if (form.is_valid()):
+            Product.objects.create(name=request.POST['name'],
+                                price=request.POST['price'],
+                                description=request.POST['description'],
+                                image=request.FILES['image'],
+                                count=request.POST['count']
+                                )
+            return HttpResponseRedirect(reverse('product.all'))
+        else:
+            context['msg'] = 'Data not completed'
+    return render(request,'product/addForm.html',context)
 
 def addProduct(request):
     if request.method == 'POST':
