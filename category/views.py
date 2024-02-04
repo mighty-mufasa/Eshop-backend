@@ -4,21 +4,21 @@ from .models import *
 
 # Create your views here.
 
-def categoryOldData(request,id):
-    obj=Category.objects.get(id=id)
-    context={'obj':obj}
-    return render(request,'category/update.html',context)
-
 def categoryUpdate(request,id):
+    category=Category.objects.get(id=id)
+    context={'category':category}
     if request.method == 'POST':
-        obj=Category.objects.get(id=id)
-        obj.name=request.POST['cName']
-        obj.email=request.POST['cEmail']
-        obj.image=request.POST['cImage']
-        obj.age=request.POST['cAge']
-        obj.save()
-
-        return HttpResponseRedirect(reverse('category.all'))
+            if (request.POST['cName'] != ''):
+                Category.objects.filter(id=id).update(
+                                name=request.POST['cName'],
+                                email=request.POST['cEmail'],
+                                image=request.POST['cImage'],
+                                age=request.POST['cAge'],
+                                )
+                return HttpResponseRedirect(reverse('category.all'))
+            else:
+                context['msg']='Kindly fill all fields'
+    return render(request,'category/update.html',context)
     
 def categoryDelete(request,id):
     Category.objects.filter(id=id).delete()
