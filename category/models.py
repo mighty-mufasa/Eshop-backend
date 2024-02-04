@@ -22,7 +22,7 @@ class Category(models.Model):
         print("request========================>",request.POST)
         return self.objects.create(name=request.POST['cName'],
                                    email=request.POST['cEmail'],
-                                   image=request.POST['cImage'],
+                                   image=request.FILES['cImage'],
                                    age=request.POST['cAge'],
                                    )
     @classmethod
