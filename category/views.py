@@ -28,7 +28,7 @@ def addCategory(request):
     if request.method == 'POST':
         Category.objects.create(name=request.POST['cName'],
                                 email=request.POST['cEmail'],
-                                image=request.POST['cImage'],
+                                image=request.FILES['cImage'],
                                 age=request.POST['cAge']
                                )
         return HttpResponseRedirect(reverse('category.all'))

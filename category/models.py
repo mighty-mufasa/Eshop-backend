@@ -5,7 +5,7 @@ from django.utils.timezone import now
 class Category(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
-    image = models.CharField(max_length=200,null=True)
+    image = models.ImageField(upload_to='category/images/',blank=True,null=True)
     age = models.IntegerField(default=22)
     createdat = models.DateTimeField(auto_now_add=True)
     updatedat = models.DateTimeField(default=now)

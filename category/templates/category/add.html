@@ -1,7 +1,7 @@
 {%extends 'index.html'%} {%load static %} {%block content%}
 <div class="container">
   <h2>Add New Category</h2>
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
     {%csrf_token%}
     <div class="mb-3">
       <label for="Name" class="form-label">Name</label>
@@ -13,7 +13,7 @@
     </div>
     <div class="mb-3">
       <label for="Image" class="form-label">Image</label>
-      <input type="text" class="form-control" id="Image" name="cImage" />
+      <input type="file" class="form-control" id="Image" name="cImage" />
     </div>
     <div class="mb-3">
       <label for="Age" class="form-label">Age</label>
