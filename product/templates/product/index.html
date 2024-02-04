@@ -29,11 +29,12 @@
       <td>{{product.description}}</td>
       <td>
         <div style="width: 150px; height: 150px">
-          <img
+          <img src="{{product.getImgURL}}" alt="product" style="width: 100%" />
+          <!-- <img
             src="/media/{{product.image}}"
             alt="product"
             style="width: 100%"
-          />
+          /> -->
         </div>
       </td>
       <td>{{product.count}}</td>
