@@ -30,6 +30,7 @@ def addProduct(request):
         Product.objects.create(name=request.POST['pName'],
                                price=request.POST['pPrice'],
                                description=request.POST['pDescription'],
+                               image=request.FILES['pImage'],
                                count=request.POST['pCount']
                                )
         return HttpResponseRedirect(reverse('product.all'))
