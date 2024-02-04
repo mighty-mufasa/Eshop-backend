@@ -1,6 +1,7 @@
 from django.shortcuts import render,reverse
 from django.http import  HttpResponseRedirect
 from .models import *
+from .forms import *
 
 # Create your views here.
 
@@ -23,6 +24,22 @@ def categoryUpdate(request,id):
 def categoryDelete(request,id):
     Category.objects.filter(id=id).delete()
     return HttpResponseRedirect(reverse('category.all'))
+
+def categoryAddForm(request):
+    form = CategoryForm()
+    context = {'form': form}
+    if request.method == 'POST':
+        form = CategoryForm(request.POST,request.FILES)
+        if (form.is_valid()):
+            Category.objects.create(name=request.POST['name'],
+                                email=request.POST['email'],
+                                image=request.FILES['image'],
+                                age=request.POST['age']
+                                )
+            return HttpResponseRedirect(reverse('category.all'))
+        else:
+            context['msg'] = 'Data not completed'
+    return render(request,'category/addForm.html',context)
 
 def addCategory(request):
     if request.method == 'POST':
