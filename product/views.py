@@ -5,21 +5,21 @@ from .models import *
 def hello(request):
     return  render(request,'index.html')
 
-def productOldData(request,id):
-    obj=Product.objects.get(id=id)
-    context={'obj':obj}
-    return render(request,'product/update.html',context)
-
 def productUpdate(request,id):
+    product=Product.objects.get(id=id)
+    context={'product':product}
     if request.method == 'POST':
-        obj=Product.objects.get(id=id)
-        obj.name=request.POST['pName']
-        obj.price=request.POST['pPrice']
-        obj.description=request.POST['pDescription']
-        obj.count=request.POST['pCount']
-        obj.save()
-
-        return HttpResponseRedirect(reverse('product.all'))
+            if (request.POST['pName'] != ''):
+                Product.objects.filter(id=id).update(
+                                name=request.POST['pName'],
+                                price=request.POST['pPrice'],
+                                description=request.POST['pDescription'],
+                                count=request.POST['pCount']
+                                )
+                return HttpResponseRedirect(reverse('product.all'))
+            else:
+                context['msg']='Kindly fill all fields'
+    return render(request,'product/update.html',context)
 
 def productDelete(request,id):
     Product.objects.filter(id=id).delete()

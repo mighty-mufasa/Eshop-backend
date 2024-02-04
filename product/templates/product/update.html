@@ -1,7 +1,7 @@
 {%extends 'index.html'%} {%load static %} {%block content%}
 <div class="container">
-  <h2>Add New Product</h2>
-  <form action="{% url 'product.update' obj.id%}" method="post">
+  <h2>Update Product</h2>
+  <form action="{% url 'product.update' product.id%}" method="post">
     {%csrf_token%}
     <div class="mb-3">
       <label for="Name" class="form-label">Name</label>
@@ -10,7 +10,7 @@
         class="form-control"
         id="Name"
         name="pName"
-        value="{{obj.name}}"
+        value="{{product.name}}"
       />
     </div>
     <div class="mb-3">
@@ -20,7 +20,7 @@
         class="form-control"
         id="Price"
         name="pPrice"
-        value="{{obj.price}}"
+        value="{{product.price}}"
       />
     </div>
     <div class="mb-3">
@@ -30,7 +30,7 @@
         class="form-control"
         id="Description"
         name="pDescription"
-        value="{{obj.description}}"
+        value="{{product.description}}"
       />
     </div>
     <div class="mb-3">
@@ -40,7 +40,7 @@
         class="form-control"
         id="Image"
         name="pImage"
-        value="{{obj.image}}"
+        value="{{product.image}}"
       />
     </div>
     <div class="mb-3">
@@ -50,11 +50,12 @@
         class="form-control"
         id="Count"
         name="pCount"
-        value="{{obj.count}}"
+        value="{{product.count}}"
       />
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+  <div style="color: red">{{msg}}</div>
 </div>
 {%endblock%}
