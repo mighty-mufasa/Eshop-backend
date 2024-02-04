@@ -23,7 +23,7 @@ class Product(models.Model):
                                    description=request.POST['pDescription'],
                                    image=request.FILES['pImage'],
                                    count=request.POST['pCount'],
-                                   category=Category.objects.get(id=request.POST['(Category)'])
+                                   category=Category.objects.get(id=request.POST['pCategory'])
                                    )
     @classmethod
     def productUpdate(self,request,id):

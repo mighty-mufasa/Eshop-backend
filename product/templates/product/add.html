@@ -29,6 +29,15 @@
       <input type="number" class="form-control" id="Count" name="pCount" />
     </div>
 
+    <div class="mb-3">
+      <label for="category" class="form-label">Category</label>
+      <select name="pCategory" id="category">
+        {%for category in categories%}
+        <option value="{{category.id}}">{{category.name}}</option>
+        {%endfor%}
+      </select>
+    </div>
+
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>

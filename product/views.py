@@ -59,7 +59,8 @@ def addProduct(request):
         #                        count=request.POST['pCount']
         #                        )
         return HttpResponseRedirect(reverse('product.all'))
-    return render(request,'product/add.html')
+    context={'categories':Category.objects.all()}
+    return render(request,'product/add.html',context)
 
 def productList(request):
     # context={'products':Product.objects.all()}
