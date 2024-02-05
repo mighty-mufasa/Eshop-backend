@@ -4,9 +4,18 @@ from .models import *
 from .forms import *
 from .formsModel import *
 from django.views import View
+from django.views.generic import UpdateView
+from django.urls import reverse_lazy
 
 def hello(request):
     return  render(request,'index.html')
+
+class ProductUpdateGeneric(UpdateView):
+    model = Product
+    template_name = 'product/updateFormModel.html'
+    context_object_name = 'formModel'
+    form_class = ProductFormModel
+    success_url = reverse_lazy('product.all')
 
 class ProductUpdate(View):
     def get(self, request, id):

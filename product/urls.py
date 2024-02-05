@@ -12,5 +12,8 @@ urlpatterns = [
     # path('UpdateFormModel/<int:id>',views.productUpdateFormModel,name="product.updateFormModel"),
 
     # ClassBasedView
-    path('UpdateFormModel/<int:id>',views.ProductUpdate.as_view(),name="product.updateFormModel"),
+    # path('UpdateFormModel/<int:id>',views.ProductUpdate.as_view(),name="product.updateFormModel"),
+
+    # GenericView
+    path('UpdateFormModel/<pk>',views.ProductUpdateGeneric.as_view(),name="product.updateFormModel"),
 ]

@@ -2,7 +2,9 @@
 <div class="container">
   <h2>Add New Product</h2>
   <form method="post" enctype="multipart/form-data">
-    {%csrf_token%} {{formModel}}
+    {%csrf_token%}
+    <!-- {{formModel}} -->
+    {{form}}
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
   <div style="color: red">{{msg}}</div>
