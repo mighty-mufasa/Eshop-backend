@@ -9,6 +9,12 @@ from django.urls import reverse_lazy
 
 def hello(request):
     return  render(request,'index.html')
+class ProductAddGeneric(CreateView):
+    model = Product
+    template_name = 'product/addFormModel.html'
+    form_class = ProductFormModel
+    success_url = reverse_lazy('product.listFormModel')
+
 class ProductListGeneric(ListView):
     model = Product
     template_name = 'product/index.html'

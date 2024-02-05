@@ -19,4 +19,5 @@ urlpatterns = [
     path('<pk>',views.ProductDetailsGeneric.as_view(),name="product.detailsFormModel"),
     path('DeleteFormModel/<pk>',views.ProductDeleteGeneric.as_view(),name="product.deleteFormModel"),
     path('ListFormModel/',views.ProductListGeneric.as_view(),name="product.listFormModel"),
+    path('AddFormModel/',views.ProductAddGeneric.as_view(),name="product.addFormModel"),
 ]
