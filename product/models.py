@@ -31,6 +31,7 @@ class Product(models.Model):
                                 name=request.POST['pName'],
                                 price=request.POST['pPrice'],
                                 description=request.POST['pDescription'],
+                                # image=request.POST['pImage'],
                                 count=request.POST['pCount'],
                                 category=Category.objects.get(id=request.POST['pCategory'])
                                 )

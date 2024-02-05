@@ -19,6 +19,15 @@ def productUpdate(request,id):
                 #                 description=request.POST['pDescription'],
                 #                 count=request.POST['pCount']
                 #                 )
+
+# Update Product Image
+                # obj = Product.objects.get(id=id)
+                # obj.name = request.POST['pName']
+                # obj.price = request.POST['pPrice']
+                # obj.description = request.POST['pDescription']
+                # obj.count = request.POST['pCount']
+                # obj.image = '/product/images/'+request.POST['pImage']
+                # obj.save()
                 return HttpResponseRedirect(reverse('product.all'))
             else:
                 context['msg']='Kindly fill all fields'

@@ -33,15 +33,12 @@
         value="{{product.description}}"
       />
     </div>
+    <div style="width: 150px">
+      <img src="{{product.getImgURL}}" alt="product" style="width: 100%" />
+    </div>
     <div class="mb-3">
-      <label for="Image" class="form-label">Image</label>
-      <input
-        type="text"
-        class="form-control"
-        id="Image"
-        name="pImage"
-        value="{{product.image}}"
-      />
+      <label for="Image" class="form-label">Change Image</label>
+      <input type="file" class="form-control" id="Image" name="pImage" />
     </div>
     <div class="mb-3">
       <label for="Count" class="form-label">Count</label>
