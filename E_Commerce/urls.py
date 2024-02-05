@@ -26,5 +26,6 @@ urlpatterns = [
     path('',Pviews.hello),
     path('Product/',include('product.urls')),
     path('Category/',include('category.urls')),
+    path('account/',include('django.contrib.auth.urls')),
     path('AboutUs/',Pviews.aboutUs),
 ]+static(MEDIA_URL, document_root=MEDIA_ROOT)
