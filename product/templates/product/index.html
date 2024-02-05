@@ -68,6 +68,11 @@
             UpdateFormModel
           </button>
         </a>
+        <a href="{% url 'product.deleteFormModel' product.id%}">
+          <button type="button" class="btn btn-danger my-3">
+            DeteteFormModel
+          </button>
+        </a>
       </td>
       {%endfor%}
     </tr>

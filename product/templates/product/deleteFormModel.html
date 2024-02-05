@@ -1,0 +1,11 @@
+{%extends 'index.html'%} {%load static %} {%block content%}
+<div class="container">
+  <h2>Add New Product</h2>
+  <form method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    <input type="submit" value="are u sure u want to delete" />
+    <input type="submit" value="cancel" />
+  </form>
+  <div style="color: red">{{msg}}</div>
+</div>
+{%endblock%}
