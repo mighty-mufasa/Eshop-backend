@@ -2,6 +2,7 @@ from django.shortcuts import render,reverse
 from django.http import  HttpResponseRedirect, HttpResponse
 from .models import *
 from .forms import *
+from .formsModel import *
 
 def hello(request):
     return  render(request,'index.html')
@@ -49,6 +50,16 @@ def productDelete(request,id):
     # Product.objects.filter(id=id).delete()
     Product.productDelete(id)
     return HttpResponseRedirect(reverse('product.all'))
+
+def productAddFormModel(request):
+    formModel = ProductFormModel()
+    context = {'formModel': formModel}
+    if request.method == 'POST':
+        formModel = ProductFormModel(request.POST,request.FILES)
+        if (formModel.is_valid()):
+            formModel.save()
+            return HttpResponseRedirect(reverse('product.all'))
+    return render(request,'product/addFormModel.html',context)
 
 def productAddForm(request):
     form = ProductForm()
