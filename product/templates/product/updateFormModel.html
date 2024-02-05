@@ -1,0 +1,10 @@
+{%extends 'index.html'%} {%load static %} {%block content%}
+<div class="container">
+  <h2>Add New Product</h2>
+  <form method="post" enctype="multipart/form-data">
+    {%csrf_token%} {{formModel}}
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <div style="color: red">{{msg}}</div>
+</div>
+{%endblock%}

@@ -55,6 +55,11 @@
         <a href="{% url 'product.update' product.id%}">
           <button type="button" class="btn btn-secondary my-3">Update</button>
         </a>
+        <a href="{% url 'product.updateFormModel' product.id%}">
+          <button type="button" class="btn btn-secondary my-3">
+            UpdateFormModel
+          </button>
+        </a>
         <a href="{% url 'product.delete' product.id%}">
           <button type="button" class="btn btn-danger my-3">Delete</button>
         </a>

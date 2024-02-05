@@ -1,4 +1,4 @@
-from django.shortcuts import render,reverse
+from django.shortcuts import render,reverse,redirect
 from django.http import  HttpResponseRedirect, HttpResponse
 from .models import *
 from .forms import *
@@ -6,6 +6,17 @@ from .formsModel import *
 
 def hello(request):
     return  render(request,'index.html')
+
+def productUpdateFormModel(request,id):
+    # updatedproduct=Product.productDetails(id)
+    context = {'formModel': ProductFormModel(instance=Product.productDetails(id))}
+    if request.method == 'POST':
+        formModel = ProductFormModel(request.POST,request.FILES,instance=Product.productDetails(id))
+        if (formModel.is_valid()):
+            formModel.save()
+            return redirect(reverse('product.all'))
+    return render(request,'product/UpdateFormModel.html',context)
+    
 
 def productUpdate(request,id):
     # product=Product.objects.get(id=id)

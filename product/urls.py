@@ -9,4 +9,5 @@ urlpatterns = [
     path('Update/<int:id>',views.productUpdate,name="product.update"),
     # Form Model
     path('NewFormModel',views.productAddFormModel,name="product.addFormModel"),
+    path('UpdateFormModel/<int:id>',views.productUpdateFormModel,name="product.updateFormModel"),
 ]
