@@ -16,4 +16,5 @@ urlpatterns = [
 
     # GenericView
     path('UpdateFormModel/<pk>',views.ProductUpdateGeneric.as_view(),name="product.updateFormModel"),
+    path('<pk>',views.ProductDetailsGeneric.as_view(),name="product.detailsFormModel"),
 ]
