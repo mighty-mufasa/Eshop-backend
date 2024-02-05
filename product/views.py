@@ -22,7 +22,19 @@ def productUpdate(request,id):
                 return HttpResponseRedirect(reverse('product.all'))
             else:
                 context['msg']='Kindly fill all fields'
+    context['categories']=Category.objects.all()
     return render(request,'product/update.html',context)
+# if request.method == 'POST':
+#         Product.productAdd(request)
+#         # Product.objects.create(name=request.POST['pName'],
+#         #                        price=request.POST['pPrice'],
+#         #                        description=request.POST['pDescription'],
+#         #                        image=request.FILES['pImage'],
+#         #                        count=request.POST['pCount']
+#         #                        )
+#         return HttpResponseRedirect(reverse('product.all'))
+#     context={'categories':Category.objects.all()}
+#     return render(request,'product/add.html',context)
 
 def productDelete(request,id):
     # Product.objects.filter(id=id).delete()

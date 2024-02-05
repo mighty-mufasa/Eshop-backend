@@ -54,6 +54,19 @@
       />
     </div>
 
+    <div class="mb-3">
+      <label for="category" class="form-label">Category</label>
+      <select name="pCategory" id="category">
+        {% for category in categories %}
+        <div></div>
+        {% if product.category.name == category.name %}
+        <option value="{{ category.id }}" selected>{{ category.name }}</option>
+        {% else %}
+        <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endif %} {% endfor %}
+      </select>
+    </div>
+
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
   <div style="color: red">{{msg}}</div>
