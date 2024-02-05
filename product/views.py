@@ -4,11 +4,16 @@ from .models import *
 from .forms import *
 from .formsModel import *
 from django.views import View
-from django.views.generic import UpdateView,DetailView,DeleteView
+from django.views.generic import UpdateView,DetailView,DeleteView,ListView,CreateView
 from django.urls import reverse_lazy
 
 def hello(request):
     return  render(request,'index.html')
+class ProductListGeneric(ListView):
+    model = Product
+    template_name = 'product/index.html'
+    context_object_name = 'products'
+    success_url = reverse_lazy('product.listFormModel')
 
 class ProductDeleteGeneric(DeleteView):
     model = Product
