@@ -1,5 +1,10 @@
 from rest_framework import serializers
 
+class CategorySerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+    name = serializers.CharField(max_length=100)
+    email = serializers.EmailField()
+
 class ProductSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     name = serializers.CharField(max_length=100)
@@ -9,3 +14,4 @@ class ProductSerializer(serializers.Serializer):
     count = serializers.IntegerField()
     createdat = serializers.DateTimeField(read_only=True)
     updatedat = serializers.DateTimeField(read_only=True)
+    category = CategorySerializer(allow_null=True)
