@@ -1,7 +1,7 @@
 from django.shortcuts import render,reverse,redirect
 from django.contrib.auth import authenticate
 from django.views.generic import CreateView
-# from  product.models import *
+from  product.models import *
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
@@ -15,4 +15,4 @@ class Registrationform(CreateView):
     success_url = reverse_lazy('login')
 
 def Myprofile(request):
-    return redirect('/')
+    return redirect(reverse('product.all'))
