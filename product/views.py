@@ -60,7 +60,7 @@ def productUpdateFormModel(request,id):
             return redirect(reverse('product.all'))
     return render(request,'product/UpdateFormModel.html',context)
     
-
+@login_required()
 def productUpdate(request,id):
     # product=Product.objects.get(id=id)
     product=Product.productDetails(id)
@@ -100,6 +100,7 @@ def productUpdate(request,id):
 #     context={'categories':Category.objects.all()}
 #     return render(request,'product/add.html',context)
 
+@login_required()
 def productDelete(request,id):
     # Product.objects.filter(id=id).delete()
     Product.productDelete(id)
