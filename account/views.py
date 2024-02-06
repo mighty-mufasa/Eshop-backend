@@ -15,4 +15,7 @@ class Registrationform(CreateView):
     success_url = reverse_lazy('login')
 
 def Myprofile(request):
+    request.session['name'] = 'omara'
+    request.session.remove('name')
+    # request.session.claer() remove all
     return redirect(reverse('product.all'))
