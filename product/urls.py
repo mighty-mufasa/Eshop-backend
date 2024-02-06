@@ -1,5 +1,6 @@
 from django.urls import path
 from . import  views
+from django.contrib.auth.decorators import login_required
 urlpatterns = [
     path('',views.productList,name="product.all"),
     path('<int:productid>',views.productdetails,name="productDetails"),
@@ -15,7 +16,7 @@ urlpatterns = [
     # path('UpdateFormModel/<int:id>',views.ProductUpdate.as_view(),name="product.updateFormModel"),
 
     # GenericView
-    path('UpdateFormModel/<pk>',views.ProductUpdateGeneric.as_view(),name="product.updateFormModel"),
+    path('UpdateFormModel/<pk>',login_required(views.ProductUpdateGeneric.as_view()),name="product.updateFormModel"),
     path('<pk>',views.ProductDetailsGeneric.as_view(),name="product.detailsFormModel"),
     path('DeleteFormModel/<pk>',views.ProductDeleteGeneric.as_view(),name="product.deleteFormModel"),
     path('ListFormModel/',views.ProductListGeneric.as_view(),name="product.listFormModel"),
