@@ -1,7 +1,11 @@
 from django.urls import path
 from . import  views
 from django.contrib.auth.decorators import login_required
+from django.urls import include
 urlpatterns = [
+    # API
+    path('API/',include('product.api.urls')),
+
     path('',views.productList,name="product.all"),
     path('<int:productid>',views.productdetails,name="productDetails"),
     path('New',views.addProduct,name="productAdd"),
