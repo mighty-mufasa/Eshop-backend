@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from product.models import *
 from category.models import *
+from .serialize import *
 
 
 @api_view(['GET'])
@@ -17,15 +18,21 @@ def acceptData(request):
     return Response({'msg':'Accept Data', 'data': request.data})
 
 # show all products in DB
+# @api_view(['GET'])
+# def allProducts(request):
+#     products=Product.productsList()
+#     print (products)
+#     dataJSON=[]
+#     for product in products:
+#         dataJSON.append({"id": product.id, "name": product.name,"price":product.price ,
+#                          "description": product.description, "count": product.count,
+#                          "createdat": product.createdat, "updatedat": product.updatedat})
+    
+#     return Response({'model':'Product', 'Products':dataJSON})
+    
 @api_view(['GET'])
 def allProducts(request):
     products=Product.productsList()
-    print (products)
-    dataJSON=[]
-    for product in products:
-        dataJSON.append({"id": product.id, "name": product.name,"price":product.price ,
-                         "description": product.description, "count": product.count,
-                         "createdat": product.createdat, "updatedat": product.updatedat})
-    
+    dataJSON=ProductSerializer(products,many=True).data
     return Response({'model':'Product', 'Products':dataJSON})
     
