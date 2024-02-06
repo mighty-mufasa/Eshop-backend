@@ -6,6 +6,7 @@ from .formsModel import *
 from django.views import View
 from django.views.generic import UpdateView,DetailView,DeleteView,ListView,CreateView
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 
 def hello(request):
     return  render(request,'index.html')
@@ -134,6 +135,7 @@ def productAddForm(request):
             context['msg'] = 'Data not completed'
     return render(request,'product/addForm.html',context)
 
+@login_required()
 def addProduct(request):
     if request.method == 'POST':
         Product.productAdd(request)
