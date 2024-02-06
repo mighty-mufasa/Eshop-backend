@@ -35,4 +35,9 @@ def allProducts(request):
     products=Product.productsList()
     dataJSON=ProductSerializer(products,many=True).data
     return Response({'model':'Product', 'Products':dataJSON})
-    
+
+@api_view(['GET'])
+def getProduct(request,id):
+    product=Product.productDetails(id)
+    dataJSON=ProductSerializer(product).data
+    return Response({'model':'Product', 'Product':dataJSON})    

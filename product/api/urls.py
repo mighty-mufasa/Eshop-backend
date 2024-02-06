@@ -5,4 +5,5 @@ urlpatterns = [
     path('Hello/',Hello,name='hello'),
     path('acceptData/',acceptData,name='acceptData'),
     path('allProducts/',allProducts,name='allProducts'),
+    path('<int:id>/',getProduct,name='getProduct'),
 ]
