@@ -9,4 +9,7 @@ urlpatterns = [
     path('addProduct/',addProduct,name='addProduct'),
     path('updateProduct/<int:id>',updateProduct,name='updateProduct'),
     path('deleteProduct/<int:id>',deleteProduct,name='deleteProduct'),
+
+    # Generic View
+    path('allProductsGeneric/',allProductsGeneric.as_view(),name='allProductsGeneric'),
 ]

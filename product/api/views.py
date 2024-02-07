@@ -4,7 +4,11 @@ from rest_framework.decorators import api_view
 from product.models import *
 from category.models import *
 from .serialize import *
+from rest_framework.generics import ListAPIView
 
+class allProductsGeneric(ListAPIView):
+    serializer_class = ProductSerializer
+    queryset = Product.productsList()
 
 @api_view(['GET'])
 def Hello(request):
