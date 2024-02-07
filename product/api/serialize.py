@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from product.models import *
 from category.models import *
+from rest_framework.validators import UniqueValidator
 
 
 # class CategorySerializer(serializers.Serializer):
@@ -15,10 +16,10 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class ProductSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
-    name = serializers.CharField(max_length=100)
+    name = serializers.CharField(max_length=100,validators=[UniqueValidator(queryset=Product.objects.all())])
     price = serializers.DecimalField(max_digits=10, decimal_places=2)
     description = serializers.CharField()
-    image = serializers.ImageField()
+    image = serializers.ImageField(allow_empty_file=True)
     count = serializers.IntegerField()
     createdat = serializers.DateTimeField(read_only=True)
     updatedat = serializers.DateTimeField(read_only=True)
