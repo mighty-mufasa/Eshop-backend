@@ -53,4 +53,17 @@ def addProduct(request):
         return Response({'msg':'Product added successfully'})
     print("==========> Hello World")
     return Response({'msg':'Product not added', 'error':obj.errors})
-    
+
+@api_view(['PUT'])
+def updateProduct(request,id):
+    updateProduct=Product.objects.filter(id=id)
+    if updateProduct:
+        serializedProduct= ProductSerializer(instance=updateProduct,data=request.data)
+        print("outer",serializedProduct)
+        if (serializedProduct.is_valid()):
+            print("inner")
+            serializedProduct.save()
+            return Response({'msg':'Product Updated successfully', "product":serializedProduct})
+        else:
+            return Response({'msg':'Product Not Valid'})
+    return Response({'msg':'Product not found'})

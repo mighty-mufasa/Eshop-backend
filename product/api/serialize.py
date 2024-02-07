@@ -43,3 +43,11 @@ class ProductSerializer(serializers.Serializer):
         # product.save()
         print("helloooooooooooooooooooo================>>>>>>>")
         return product
+    
+    def update(self,instance,validated_data):
+        instance.name=validated_data['name']
+        instance.price=validated_data['price']
+        instance.description=validated_data['description']
+        instance.category=validated_data['category.id']
+        instance.save()
+        return instance
