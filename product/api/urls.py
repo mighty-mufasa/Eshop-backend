@@ -12,4 +12,7 @@ urlpatterns = [
 
     # Generic View
     path('allProductsGeneric/',allProductsGeneric.as_view(),name='allProductsGeneric'),
+    
+    # Class Based View
+    path('allProductsClass/',allProductsClass.as_view(),name='allProductsClass'),
 ]

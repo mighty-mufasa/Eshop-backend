@@ -5,6 +5,13 @@ from product.models import *
 from category.models import *
 from .serialize import *
 from rest_framework.generics import ListAPIView
+from rest_framework.views import APIView
+
+class allProductsClass(APIView):
+    def get(self,request):
+        products=Product.productsList()
+        dataJSON=ProductSerializer(products,many=True).data
+        return Response({'model':'Product', 'Products':dataJSON})        
 
 class allProductsGeneric(ListAPIView):
     serializer_class = ProductSerializer
