@@ -41,3 +41,16 @@ def getProduct(request,id):
     product=Product.productDetails(id)
     dataJSON=ProductSerializer(product).data
     return Response({'model':'Product', 'Product':dataJSON})    
+
+@api_view(['POST'])
+def addProduct(request):
+    print("==========>", request.POST)
+    obj=ProductSerializer(data=request.data)
+    if (obj.is_valid()):
+        print("==========> Hello World1111111")
+        # Product.productAddAPI(request)
+        obj.save()
+        return Response({'msg':'Product added successfully'})
+    print("==========> Hello World")
+    return Response({'msg':'Product not added', 'error':obj.errors})
+    
