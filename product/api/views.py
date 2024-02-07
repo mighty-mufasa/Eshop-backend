@@ -67,3 +67,11 @@ def updateProduct(request,id):
         else:
             return Response({'msg':'Product Not Valid'})
     return Response({'msg':'Product not found'})
+
+@api_view(['DELETE'])
+def deleteProduct(request,id):
+    deletedProduct=Product.objects.filter(id=id).first()
+    if deletedProduct:
+        Product.objects.filter(id=id).delete()
+        return Response({'msg':'Product Deleted successfully'})
+    return Response({'msg':'Product not found'})
